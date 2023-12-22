@@ -5,7 +5,7 @@ services:
     ports:
       - 80:80
     networks:
-      - host
+      - my_bridge_network
 
   backend:
     build: ./backend
@@ -14,7 +14,7 @@ services:
     depends_on:
       - database
     networks:
-      - host
+      - my_bridge_network
 
   database:
     image: mongo
@@ -23,11 +23,11 @@ services:
     volumes:
       - mongodata:/data/db
     networks:
-      - host
+      - my_bridge_network
 
       
 volumes:
     mongodata:
 
 networks:
-    host:
+    my_bridge_network:
